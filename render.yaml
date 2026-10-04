@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dukkan-bot
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: DB_PATH
+        value: /data/shop.db
+      - key: TZ_NAME
+        value: Asia/Riyadh
+      - key: CURRENCY
+        value: ر.س
+      - key: LOW_STOCK
+        value: "5"
+    disk:
+      name: dukkan-data
+      mountPath: /data
+      sizeGB: 1
